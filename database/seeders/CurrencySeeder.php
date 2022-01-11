@@ -4,16 +4,22 @@ namespace Database\Seeders;
 
 use App\Models\Currency;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Str;
 
 class CurrencySeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
+   
     public function run()
     {
-        Currency::factory()->create();
+        $currencies = [ 'USD' => '$',  'TL' => '₺'];
+        foreach( $currencies as $title => $symbol){
+            Currency::factory()->create([
+                'title' => $title,
+                'slug' => Str::slug($title),
+                'symbol' => $symbol,
+                ]
+            );
+        }
+            
     }
 }

@@ -2,12 +2,10 @@
 
 namespace Database\Seeders;
 
-use App\Models\Property;
-use Carbon\Carbon;
+use App\Models\City;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
 
-class PropertySeeder extends Seeder
+class CitySeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -16,6 +14,6 @@ class PropertySeeder extends Seeder
      */
     public function run()
     {
-        Property::factory()->count(10)->create();
+        City::factory()->count(10)->create();
     }
 }

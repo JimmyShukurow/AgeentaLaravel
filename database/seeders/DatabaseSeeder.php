@@ -2,8 +2,9 @@
 
 namespace Database\Seeders;
 
-use App\Models\Currency;
+use Database\Seeders\Property\PropertyCategorySeeder;
 use Illuminate\Database\Seeder;
+use Database\Seeders\Property\PropertySeeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -14,10 +15,11 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
         $this->call([
             PropertySeeder::class,
-            CurrencySeeder::class,
+            // CurrencySeeder::class,
+            PropertyCategorySeeder::class,
+            CitySeeder::class,
         ]);
     }
 

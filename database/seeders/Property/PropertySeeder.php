@@ -1,11 +1,11 @@
 <?php
 
-namespace Database\Seeders;
+namespace Database\Seeders\Property;
 
-use App\Models\Country;
+use App\Models\Property\Property;
 use Illuminate\Database\Seeder;
 
-class CountrySeeder extends Seeder
+class PropertySeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,6 +14,6 @@ class CountrySeeder extends Seeder
      */
     public function run()
     {
-        Country::factory()->count(10)->create();
+        Property::factory()->count(10)->create();
     }
 }

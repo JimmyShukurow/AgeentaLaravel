@@ -15,7 +15,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+    return $request->user()->name;
 });
 
-include('admin/properties.php');
+Route::middleware(['auth:sanctum'])->group(function(){
+    
+    include('admin/properties.php');
+
+});
+
+include('admin/auth.php');

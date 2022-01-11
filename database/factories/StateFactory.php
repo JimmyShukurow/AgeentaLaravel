@@ -5,7 +5,7 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
-class CurrencyFactory extends Factory
+class StateFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -15,9 +15,9 @@ class CurrencyFactory extends Factory
     public function definition()
     {
         return [
-            'title' => $this->faker->currencyCode(),
-            'slug' => Str::slug($this->faker->currencyCode()),
-            'symbol' => '$',
+            'name' => $this->faker->name(),
+            'abbrivation' => Str::random(2),
+            'country_id' => rand(1,10),
         ];
     }
 }

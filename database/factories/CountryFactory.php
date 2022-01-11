@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Str;
 
 class CountryFactory extends Factory
 {
@@ -13,8 +14,10 @@ class CountryFactory extends Factory
      */
     public function definition()
     {
+        $country = $this->faker->country();
         return [
-            //
+            'name' => $country,
+            'slug' => Str::slug($country),
         ];
     }
 }

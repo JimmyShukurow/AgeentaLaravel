@@ -2,10 +2,9 @@
 
 namespace Database\Seeders;
 
-use App\Models\Country;
 use Illuminate\Database\Seeder;
 
-class CountrySeeder extends Seeder
+class StateSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,6 +13,6 @@ class CountrySeeder extends Seeder
      */
     public function run()
     {
-        Country::factory()->count(10)->create();
+        //
     }
 }
