@@ -29,5 +29,10 @@ return [
         'secret' => env('AWS_SECRET_ACCESS_KEY'),
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
+    'google' => [
+        'client_id' => '944028214874-2gg9krjoacq9so4kdtndl9m2f28qu6nr.apps.googleusercontent.com',
+        'client_secret' => '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',
+        'redirect' => 'https://www.youtube.com',
+      ], 
 
 ];

@@ -8,3 +8,5 @@ use App\Http\Controllers\AuthController;
 Route::post('/auth', [AuthController::class, 'loginToAdmin']);
 
 Route::post('/register', [AuthController::class, 'register']);
+
+Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth:sanctum');

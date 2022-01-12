@@ -21,7 +21,7 @@ class AuthController extends Controller
 
             $user->tokens()->delete();
 
-            $token = $user->createToken('auth_token',['property:delete'])->plainTextToken;
+            $token = $user->createToken('auth_token',[$user->getRoleNames()->first()])->plainTextToken;
 
             return response()->json([
                 'access_token' => $token,
@@ -33,7 +33,23 @@ class AuthController extends Controller
 
     public function register(RegisterRequest $request)
     {
-        return 'ok';
+       
+        $validated = $request->safe()->only(['email', 'password', 'mobile_number']);
+        $validated['password'] = bcrypt($request->safe()->password);
+        $validated['name'] = $request->safe()->name.' '.$request->safe()->surname;
+        $user = User::create($validated);
+
+        if($request->has('role')){
+            if($request->role == 'corporate'){
+                $user->corporate()->create($request->safe()->except(['email', 'password', 'mobile_number', 'password', 'name', 'surname']));
+            }
+            $user->assignRole($request->role);
+        }else{
+            
+            $user->assignRole('user');
+        }
+
+        return response()->json(['name' => $user->name, 'role' => $user->getRoleNames()->first()], 201);
     }
 
     public function refreshToken(Request $request)
@@ -45,6 +61,13 @@ class AuthController extends Controller
         return response()->json([
             'access_token' => $new_token,
         ]);
+    }
+
+    public function logout(Request $request)
+    {
+        $request->user()->tokens()->delete();
+
+        return response()->json('goodbye', 200);
     }
 
 
